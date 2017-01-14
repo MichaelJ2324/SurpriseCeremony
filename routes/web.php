@@ -12,5 +12,6 @@
 */
 
 Route::get('/', 'SiteController@show');
-Route::get('/ceremony','SiteController@viewCeremony')->middleware('accessCode');
-Route::post('/code', 'SiteController@checkCode');
+Route::get('/ceremony','SiteController@viewCeremony')->middleware('web','accessCode');
+Route::post('/code', 'SiteController@checkCode')->middleware('web');
+Route::post('/rsvp', 'SiteController@preRSVP')->middleware('web');

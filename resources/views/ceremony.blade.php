@@ -9,8 +9,8 @@
     <title>Surprise Ceremony</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
     <!--[if lte IE 8]><script src="{{ asset('/js/ie/html5shiv.js') }}"></script><![endif]-->
     <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
     <!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('css/ie8.css') }}" /><![endif]-->
@@ -101,7 +101,7 @@
 
                 <div class="cd-timeline-content">
                     <h2>The Ceremony</h2>
-                    <p>The BIG Day! Vow Renewal and reception will be start at 6:30PM at the Indianapolis Public Library.</p>
+                    <p>The BIG Day! Vow Renewal and reception will start at 6:30PM at the Indianapolis Public Library.</p>
                     <a href="#event" class="cd-read-more">Details</a>
                     <span class="cd-date">August 19, 2017</span>
                 </div> <!-- cd-timeline-content -->
@@ -215,35 +215,31 @@
 
 <!-- Footer -->
 <div id="footer">
-    <div class="container">
+    <div class="container" id="rsvp">
 
         <header class="major last">
             <h3>Pre-RSVP</h3>
         </header>
-
-        <p>Coming soon. Work has been busy, and doing this all in secret doesn't lend a ton of time. Should be working by January 4, 2017.</p>
-
-        <form method="POST" action="/pre-rsvp" class="form">
+        <form method="POST" action="/rsvp" class="form">
             {{ csrf_field() }}
             <div class="form-group">
-                <label class='sr-only' for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Name" required="required" disabled="disabled"/>
+                <label class='' for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="" required="required"/>
             </div>
             <div class="form-group">
-                <label class='sr-only' for="guests">Guests</label>
-                <input type="text" class="form-control" id="guests" name="guests" placeholder="# of Guests" required="required" disabled="disabled"/>
+                <label class='' for="attending">Attending?</label>
+                <select class='form-control' name="attending" id="attending">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
             </div>
             <div class="form-group">
-                <label class='sr-only' for="email">Email</label>
-                <input type="text" class="form-control" id="email" name="email" placeholder="Email" disabled="disabled"/>
+                <label class='' for="guests">Number of Guests</label>
+                <input type="text" class="form-control" id="guests" name="guests" placeholder="" required="required" disabled="disabled" />
             </div>
-            <div class="form-group">
-                <label class='' for="emailUpdates">Email Updates</label>
-                <input type="checkbox" class="form-control" id="emailUpdates" name="emailUpdates" placeholder="Email Updates" disabled="disabled"/>
-            </div>
-            <button type="submit" class="btn btn-block" disabled="disabled">Submit</button>
-        </form>
 
+            <button type="submit" class="btn btn-lg btn-block button">Submit</button>
+        </form>
     </div>
 </div>
 
@@ -257,6 +253,16 @@
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/timeline.js') }}"></script>
 <script src="{{ asset('js/ga.js') }}"></script>
+<script type="text/javascript">
+    var $attending = $('#attending');
+    $attending.on('change',function(){
+        if($attending.val()=='1'){
+            $("#guests").removeAttr('disabled');
+        }else{
+            $("#guests").attr('disabled','disabled').val('0');
+        }
+    });
+</script>
 
 </body>
 </html>
