@@ -226,11 +226,11 @@
                     <div class="col-lg-12">
                         <h3>Gifts</h3>
                         <p>After five years of marriage, there isn’t much more we could ask for. In lieu of gifts, I ask that you donate money to any of the following great organizations.</p>
-                        <h4>Indianapolis Public Library Foundation</h4>
+                        <h4><a href="https://www.indyplfoundation.org/give">Indianapolis Public Library Foundation</a></h4>
                         <p>They were gracious enough to let me use their charity in my charade to convince Alex to purchase a dress for this event. They also provide programs for the community to foster literacy and learning for all ages.</p>
-                        <h4>World Wildlife Fund</h4>
+                        <h4><a href="https://support.worldwildlife.org/site/SPageServer?pagename=main_onetime">World Wildlife Fund</a></h4>
                         <p>Alex has always had a passion for animals and the science surrounding them. World Wildlife Fund works on conserving nature and preserving endangered animals.</p>
-                        <h4>Electronic Frontier Foundation</h4>
+                        <h4><a href="https://supporters.eff.org/donate">Electronic Frontier Foundation</a></h4>
                         <p>I work in the tech industry, and the internet is my livelihood. The Electronic Frontier Foundation supports an open, neutral internet for all to use and promotes free speech and privacy.</p>
                     </div>
                 </div>
