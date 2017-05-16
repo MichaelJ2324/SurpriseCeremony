@@ -1363,3 +1363,30 @@ fieldset[disabled] .form-control {
 .form-control{
 	border-radius: 0;
 }
+
+.form-control{
+	text-align: center;
+}
+
+.btn,
+.cd-read-more {
+	border-radius: 0 !important;
+}
+
+
+.toggle-on {
+	font-weight: bold;
+	color: #FF7302;
+	background-color: #FFF;
+}
+
+.normal-p {
+	border: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	font-size: 1em !important;
+	line-height: 1em !important;
+	display: inline-block !important;
+	text-transform: none !important;
+	letter-spacing: 0 !important;
+}

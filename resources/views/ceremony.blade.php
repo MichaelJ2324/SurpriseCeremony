@@ -11,10 +11,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/bootstrap2-toggle.min.css') }}" />
     <!--[if lte IE 8]><script src="{{ asset('/js/ie/html5shiv.js') }}"></script><![endif]-->
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
     <!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('css/ie8.css') }}" /><![endif]-->
     <link rel="stylesheet" href="{{ asset('css/timeline.css') }}"> <!-- Resource style -->
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
     <script src="{{ asset('js/ga.js') }}"></script>
 </head>
 <body>
@@ -89,8 +90,8 @@
 
                 <div class="cd-timeline-content">
                     <h2>Send Invites</h2>
-                    <p>Invitations for the ceremony will be sent out.</p>
-                    <span class="cd-date">April 15, 2017</span>
+                    <p>Invitations for the ceremony will be sent out. Please RSVP by August 1st, 2017.</p>
+                    <span class="cd-date">May 20, 2017</span>
                 </div> <!-- cd-timeline-content -->
             </div> <!-- cd-timeline-block -->
 
@@ -166,12 +167,13 @@
     </header>
     <div class="container">
         <ul class="nav nav-tabs nav-justified" id="eventTabs">
-            <li role="presentation" class="active"><a href="#eventDetails" aria-controls="eventDetails" role="tab" data-toggle="tab">Details</a></li>
+            <li role="presentation" class="active"><a href="#venue" aria-controls="eventDetails" role="tab" data-toggle="tab">Details</a></li>
             <li role="presentation"><a href="#accommodations" aria-controls="accommodations" role="tab" data-toggle="tab">Accommodations</a></li>
-            <!--<li role="presentation"><a href="#gifts">Gifts</a></li>-->
+            <li role="presentation"><a href="#menu" aria-controls="accommodations" role="tab" data-toggle="tab">Menu</a></li>
+            <li role="presentation"><a href="#gifts" aria-controls="accommodations" role="tab" data-toggle="tab">Gifts</a></li>
         </ul>
         <div class="tab-content">
-            <div role='tabpanel' class="tab-pane active" id="eventDetails">
+            <div role='tabpanel' class="tab-pane active" id="venue">
                 <div class="container" style="margin-top: 12px; margin-bottom: 12px;">
                     <div class="row">
                         <div class="col-lg-6" style="text-align: center">
@@ -196,18 +198,43 @@
                         <h3>Comfort Inn East</h3>
                         <p>2295 Shadeland Ave,<br/>Indianapolis, IN 46219</p>
                         <p>$145/night - 20 Rooms Currently Available<br/>
-                        Reserve under Russell Wedding Group for discount</p>
-                        <p>Hopefully another hotel soon. Due to it being GenCon weekend, I ask that you please book early, as hotels are selling out. </p>
+                        Reserve under Russell Wedding Group for discounted rate.</p>
                     </div>
                 </div>
             </div>
-            <!--<div role='tabpanel' class="tab-pane" id="gifts">
+            <div role='tabpanel' class="tab-pane" id="menu">
                 <div class="container">
-                    <div class="col-lg-12">
-
+                    <div class="col-lg-6" style="text-align: center">
+                        <h3>Cocktail Hour</h3>
+                        <p>Goat Cheese and Roasted Garlic Bruschetta with Grape Tomato and Parsley</p>
+                        <p>Coconut Shrimp with Sweet Red Chile Sauce</p>
+                        <p>Kona Seared Beef Tenderloin and Grilled Pineapple Skewer with Sriracha Chili Sour Cream</p>
+                    </div>
+                    <div class="col-lg-6" style="text-align: center">
+                        <h3>Dinner</h3>
+                        <h4>Chicken</h4>
+                        <p>Cilantro and Tequila Grilled Chicken with Roasted Red Pepper and Honey Sauce. Cheddar Mashed Potatoes and Haricot Verts</p>
+                        <h4>Beef</h4>
+                        <p>Red Wine Braised Beef Short Ribs with Fortified Pan Sauce. Cheddar Mashed Potatoes and Haricot Verts</p>
+                        <h4>Vegan</h4>
+                        <p>Portobello and Grilled Vegetable Stack with Roasted Red Potatoes, Asparagus and Balsamic Syrup</p>
                     </div>
                 </div>
-            </div>-->
+            </div>
+            <div role='tabpanel' class="tab-pane" id="gifts">
+                <div class="container">
+                    <div class="col-lg-12">
+                        <h3>Gifts</h3>
+                        <p>After five years of marriage, there isn’t much more we could ask for. In lieu of gifts, I ask that you donate money to any of the following great organizations.</p>
+                        <h4>Indianapolis Public Library Foundation</h4>
+                        <p>They were gracious enough to let me use their charity in my charade to convince Alex to purchase a dress for this event. They also provide programs for the community to foster literacy and learning for all ages.</p>
+                        <h4>World Wildlife Fund</h4>
+                        <p>Alex has always had a passion for animals and the science surrounding them. World Wildlife Fund works on conserving nature and preserving endangered animals.</p>
+                        <h4>Electronic Frontier Foundation</h4>
+                        <p>I work in the tech industry, and the internet is my livelihood. The Electronic Frontier Foundation supports an open, neutral internet for all to use and promotes free speech and privacy.</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -218,9 +245,10 @@
     <div class="container" id="rsvp">
 
         <header class="major last">
-            <h3>Pre-RSVP</h3>
+            <h3>RSVP</h3>
+            <p class="normal-p">If you already submitted your RSVP and need to change it, use the confirmation code as your name.</p>
         </header>
-        <form method="POST" action="/rsvp" class="form">
+        <form class="form-horizontal" id="rsvp-form">
             {{ csrf_field() }}
             <div class="form-group">
                 <label class='' for="name">Name</label>
@@ -228,17 +256,38 @@
             </div>
             <div class="form-group">
                 <label class='' for="attending">Attending?</label>
-                <select class='form-control' name="attending" id="attending">
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
-                </select>
+                <input type="checkbox" name="attending" id="attending" data-toggle="toggle" data-on="Absolutely" data-off="Regretfully, No" data-width="260" data-height="36" />
             </div>
             <div class="form-group">
                 <label class='' for="guests">Number of Guests</label>
-                <input type="text" class="form-control" id="guests" name="guests" placeholder="" required="required" disabled="disabled" />
+                <input type="text" class="form-control" id="guests" name="guests" placeholder="" required="required" disabled="disabled"/>
             </div>
-
-            <button type="submit" class="btn btn-lg btn-block button">Submit</button>
+            <div class="form-group hidden" id="menuChoices">
+                <label class='' for="dinnerSelection">Dinner Selection</label>
+                <div class="container" id="dinnerSelection">
+                    <div class="form-group">
+                        <label for="chicken" class="col-sm-3 control-label">Chicken</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="chicken" name="chicken" placeholder="# of dinners" required="required" disabled="disabled"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="beef">Beef</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="beef" name="beef" placeholder="# of dinners" required="required" disabled="disabled"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="vegan">Vegan</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="vegan" name="vegan" placeholder="# of dinners" required="required" disabled="disabled"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" id="response">
+            </div>
+            <button type="submit" class="btn btn-lg btn-block button" id="submit">Submit</button>
         </form>
     </div>
 </div>
@@ -246,6 +295,7 @@
 <!-- Scripts -->
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap2-toggle.min.js') }}"></script>
 <script src="{{ asset('js/skel.min.js') }}"></script>
 <script src="{{ asset('js/modernizr.js') }}"></script>
 <script src="{{ asset('js/util.js') }}"></script>
@@ -254,13 +304,138 @@
 <script src="{{ asset('js/timeline.js') }}"></script>
 <script src="{{ asset('js/ga.js') }}"></script>
 <script type="text/javascript">
-    var $attending = $('#attending');
-    $attending.on('change',function(){
-        if($attending.val()=='1'){
-            $("#guests").removeAttr('disabled');
-        }else{
-            $("#guests").attr('disabled','disabled').val('0');
-        }
+    $(function() {
+        $('#attending').change(function () {
+            if ($(this).prop('checked')) {
+                $("#guests").removeAttr('disabled');
+                $("#menuChoices").removeClass('hidden').find(':input').each(function(){
+                    $(this).removeAttr('disabled');
+                });
+            } else {
+                $("#guests").attr('disabled', 'disabled').val('0').trigger('change');
+                $("#menuChoices").addClass('hidden').find(':input').each(function(){
+                    $(this).attr('disabled');
+                });
+            }
+        });
+
+        var Dinners = {
+            guests: 0,
+            options: {
+                chicken: 0,
+                beef: 0,
+                vegan: 0
+            },
+            dinnerUpdateEvent: function(e){
+                var $dinner = $(e.currentTarget);
+                var amount = parseInt($dinner.val());
+                amount = isNaN(amount)?0:amount;
+                $dinner.val(amount);
+                if (amount > this.guests){
+                    $dinner.val(this.guests);
+                }
+                this.updateDinner($dinner.attr('name'),amount);
+            },
+            updateDinner: function(type,amount){
+                amount = parseInt(amount);
+                if (this.options.hasOwnProperty(type)){
+                    if (amount > this.guests){
+                        amount = this.guests;
+                    }
+                    this.options[type] = amount;
+                    this.calculateDinners(type);
+                }
+            },
+            calculateDinners: function(type){
+                type = type||'chicken';
+                if (this.options.hasOwnProperty(type)) {
+                    var available = this.guests - this.options[type];
+                    for (var dinner in this.options) {
+                        if (dinner !== type) {
+                            if (this.options.hasOwnProperty(dinner)) {
+                                if (this.options[dinner] > available ) {
+                                    this.options[dinner] = available;
+                                } else {
+                                    if (this.options[dinner] !== 0){
+                                        available = available - this.options[dinner]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    for (var dindin in this.options){
+                        $('#' + dindin).val(this.options[dindin]);
+                    }
+                }
+            }
+        };
+
+        $('#guests').change(function(){
+            var guests = parseInt($(this).val());
+            guests = isNaN(guests)?0:guests;
+            $(this).val(guests);
+            Dinners.guests = guests;
+            Dinners.calculateDinners();
+        });
+
+        $('#chicken').change(Dinners.dinnerUpdateEvent.bind(Dinners));
+        $('#beef').change(Dinners.dinnerUpdateEvent.bind(Dinners));
+        $('#vegan').change(Dinners.dinnerUpdateEvent.bind(Dinners));
+
+        var $submit = $('#submit');
+        $submit.on('click',function(e){
+            e.preventDefault();
+
+            var data = {};
+            var $form = $("#rsvp-form");
+            $form.find(':input').each(function(){
+                if (this.name !== ''){
+                    $(this).attr('disabled','disabled');
+                    var value = $(this).val();
+                    if (this.name == 'attending'){
+                        value = $(this).prop('checked')?1:0;
+                    }
+                    data[this.name] = value;
+                }
+            });
+            $.ajax({
+                type: "POST",
+                url: window.location.origin+"/rsvp",
+                data: data,
+                success: function(response){
+                    response = JSON.parse(response);
+                    var message = 'Thanks for your RSVP, ';
+                    if (data.attending == 1){
+                        message += "we look forward to seeing you there. ";
+                    }else{
+                        message += "sorry you cannot attend. "
+                    }
+                    $('#response').html(message+response.success);
+                    $form.find(':input').each(function(){
+                        $(this).removeAttr('disabled');
+                        if (this.name !== '_token'){
+                            $(this).val('');
+                        }
+                    });
+                    if (data.attending == 0){
+                        $("#guests").attr('disabled', 'disabled').val('0').trigger('change');
+                        $("#menuChoices").addClass('hidden').find(':input').each(function(){
+                            $(this).attr('disabled');
+                        });
+                    }
+                    setTimeout(function(){
+                        $('#response').html("");
+                    },20000);
+                },
+                error: function(data){
+                    var response = JSON.parse(data);
+                    $form.find(':input').each(function(){
+                        $(this).removeAttr('disabled');
+                    });
+                    $('#response').html("Oops, looks like something went wrong trying to submit your RSVP. Try refreshing the page and try again.");
+                }
+            });
+        });
     });
 </script>
 
