@@ -79,6 +79,7 @@
                 <div class="cd-timeline-content">
                     <h3>The Ruse</h3>
                     <p>With the event scheduled and the guests notified, the only person left to invite is the 'bride'. I will re-propose to Alex, and have invitations to a black & white charity ball/gala that we are attending in August before our vacation. </p>
+                    <a href="https://www.indymoderngiving.org/events" class="cd-read-more">The Gala</a>
                     <span class="cd-date">February 2017</span>
                 </div> <!-- cd-timeline-content -->
             </div> <!-- cd-timeline-block -->
